@@ -12,8 +12,8 @@ Then add the following code to your project
 ```php
 use BureauPartners\InkCoverageExtractor\InkCoverageExtractor;
 
-$pdfgrep = new InkCoverageExtractor('Document.pdf');
-$pdfgrep->getCoverage(); // Returns all pages with ink coverage
+$ink_coverage = new InkCoverageExtractor('Document.pdf');
+$ink_coverage->getCoverage(); // Returns all pages with ink coverage
 ```
 
 ## Contributing
