@@ -1,0 +1,30 @@
+# PDF Ink Coverage Extractor
+![Run tests](https://github.com/bureaupartners/pdf-ink-coverage-extractor/workflows/Run%20tests/badge.svg?branch=master)
+
+A simple package for extracting the ink coverage in a PDF file
+
+## Installing / Getting started
+First add bureaupartners/pdf-ink-coverage-extractor to your composer.json
+```shell
+composer require bureaupartners/pdf-ink-coverage-extractor
+```
+Then add the following code to your project
+```php
+use BureauPartners\InkCoverageExtractor\InkCoverageExtractor;
+
+$pdfgrep = new InkCoverageExtractor('Document.pdf');
+$pdfgrep->getCoverage(); // Returns all pages with ink coverage
+```
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and use a feature
+branch. Pull requests are warmly welcome.
+
+## Links
+- Repository: https://github.com/bureaupartners/pdf-ink-coverage-extractor
+- Issue tracker: https://github.com/bureaupartners/pdf-ink-coverage-extractor/issues
+
+
+## Licensing
+The code in this project is licensed under MIT license.

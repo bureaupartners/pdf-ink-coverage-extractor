@@ -1,0 +1,28 @@
+name: Run tests
+
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  php-tests:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        php: [7.4, 7.3, 7.2]
+        dependency-version: [prefer-lowest, prefer-stable]
+        os: [ubuntu-latest]
+
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: |
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+      - name: Execute tests
+        run: vendor/bin/phpunit
