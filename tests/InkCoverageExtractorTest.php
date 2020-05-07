@@ -19,8 +19,8 @@ final class InkCoverageExtractorTest extends TestCase
         $coverage  = $extractor->getCoverage();
         $this->assertCount(7, $coverage);
         $this->assertEquals(0, $coverage[6]['sum']);
-        $this->assertEquals(0.08155, $coverage[5]['C']);
-        $this->assertEquals(0.20428, $coverage[7]['sum']);
+        $this->assertEquals(5.88439, $coverage[5]['C']);
+        $this->assertEquals(15.100810000000001, $coverage[7]['sum']);
     }
 
     public function testCanGetGrayScaleCoverage()
@@ -33,6 +33,6 @@ final class InkCoverageExtractorTest extends TestCase
         $this->assertEquals(0, $coverage[6]['Y']);
         $this->assertEquals(0, $coverage[6]['K']);
         $this->assertEquals(0, $coverage[6]['sum']);
-        $this->assertEquals(0.05107, $coverage[7]['sum']);
+        $this->assertEquals(5.10704, $coverage[7]['sum']);
     }
 }

@@ -11,7 +11,7 @@ namespace BureauPartners\InkCoverageExtractor;
 
 class InkCoverageExtractor
 {
-    protected $command  = 'gs  -o - -sDEVICE=inkcov';
+    protected $command  = 'gs  -dSAFER -dNOPAUSE -dBATCH -o- -sDEVICE=ink_cov';
     protected $filename = null;
     protected $pages    = [];
 
