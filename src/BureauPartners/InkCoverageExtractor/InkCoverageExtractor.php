@@ -31,11 +31,15 @@ class InkCoverageExtractor
                 continue;
             }
 
-            if ($current_page > 0) {
-                $match                                                              = trim($match);
-                $match                                                              = preg_replace('/\s+/', ' ', $match);
-                list($color_c, $color_m, $color_y, $color_k, $color_model, $status) = explode(' ', $match);
-                $this->pages[$current_page]                                         = [
+            $match       = trim($match);
+            $match       = preg_replace('/\s+/', ' ', $match);
+            $match_parts = explode(' ', $match);
+            if ($current_page > 0 && count($match_parts) > 0 && is_numeric($match_parts[0])) {
+                $color_c                    = $match_parts[0];
+                $color_m                    = $match_parts[1];
+                $color_y                    = $match_parts[2];
+                $color_k                    = $match_parts[3];
+                $this->pages[$current_page] = [
                     'C'   => $color_c,
                     'M'   => $color_m,
                     'Y'   => $color_y,
