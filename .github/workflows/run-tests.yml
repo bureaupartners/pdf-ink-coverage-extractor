@@ -21,8 +21,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v1
 
+      - name: Install ghostscript
+        run: |
+          sudo apt-get install ghostscript -y
+
       - name: Install dependencies
         run: |
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+
       - name: Execute tests
         run: vendor/bin/phpunit
