@@ -4,25 +4,25 @@
  * @link https://github.com/bureaupartners/pdf-ink-coverage-extractor
  * @license MIT
  *
- * @copyright Copyright (c) 2020, GRIVOS Holding B.V.
+ * @copyright Copyright (c) 2021, BureauPartners B.V.
  */
 
 namespace BureauPartners\InkCoverageExtractor;
 
 class InkCoverageExtractor
 {
-    protected $command = 'gs  -dSAFER -dNOPAUSE -dBATCH -o- -sDEVICE=ink_cov';
-    protected $filename = null;
-    protected $pages = [];
+    protected string $command = 'gs  -dSAFER -dNOPAUSE -dBATCH -o- -sDEVICE=ink_cov';
+    protected string $filename = '';
+    protected array $pages = [];
 
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
 
         return $this->execute();
     }
 
-    private function processOutput($output)
+    private function processOutput(array $output): void
     {
         $current_page = 0;
         foreach ($output as $match) {
@@ -36,10 +36,10 @@ class InkCoverageExtractor
             $match = preg_replace('/\s+/', ' ', $match);
             $match_parts = explode(' ', $match);
             if ($current_page > 0 && count($match_parts) > 0 && is_numeric($match_parts[0])) {
-                $color_c = $match_parts[0];
-                $color_m = $match_parts[1];
-                $color_y = $match_parts[2];
-                $color_k = $match_parts[3];
+                $color_c = (int) $match_parts[0];
+                $color_m = (int) $match_parts[1];
+                $color_y = (int) $match_parts[2];
+                $color_k = (int) $match_parts[3];
                 $this->pages[$current_page] = [
                     'C' => $color_c,
                     'M' => $color_m,
@@ -52,7 +52,7 @@ class InkCoverageExtractor
         }
     }
 
-    private function execute($options = null)
+    private function execute(string $options = ''): bool
     {
         exec($this->command . ' ' . $options . ' ' . $this->filename, $output, $exit_code);
         switch ($exit_code) {
@@ -75,7 +75,7 @@ class InkCoverageExtractor
         }
     }
 
-    public function getCoverage()
+    public function getCoverage(): array
     {
         return $this->pages;
     }

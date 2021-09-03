@@ -2,10 +2,10 @@
     "name": "bureaupartners/pdf-ink-coverage-extractor",
     "description": "Composer package to extract ink coverage in PDF file",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8",
+        "phpunit/phpunit": "^9",
         "vimeo/psalm": "^4.9"
     },
     "license": "MIT",
