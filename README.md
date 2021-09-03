@@ -1,4 +1,6 @@
 # PDF Ink Coverage Extractor
+![Check & fix styling](https://github.com/bureaupartners/pdf-ink-coverage-extractor/workflows/Check%20&%20fix%20styling/badge.svg?branch=master)
+![Run Psalm](https://github.com/bureaupartners/pdf-ink-coverage-extractor/workflows/Psalm/badge.svg?branch=master)
 ![Run tests](https://github.com/bureaupartners/pdf-ink-coverage-extractor/workflows/Run%20tests/badge.svg?branch=master)
 
 A simple package for extracting the ink coverage in a PDF file
