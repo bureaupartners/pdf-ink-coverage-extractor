@@ -3,7 +3,7 @@ name: Run tests
 on:
   push:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 1 * *"
 
 jobs:
   php-tests:
@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        php: [7.4, 7.3, 7.2]
+        php: [8.0, 7.4, 7.3]
         dependency-version: [prefer-lowest, prefer-stable]
         os: [ubuntu-latest]
 
