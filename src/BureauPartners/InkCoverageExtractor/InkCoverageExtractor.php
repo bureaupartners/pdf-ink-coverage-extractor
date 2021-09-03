@@ -36,10 +36,10 @@ class InkCoverageExtractor
             $match = preg_replace('/\s+/', ' ', $match);
             $match_parts = explode(' ', $match);
             if ($current_page > 0 && count($match_parts) > 0 && is_numeric($match_parts[0])) {
-                $color_c = (int) $match_parts[0];
-                $color_m = (int) $match_parts[1];
-                $color_y = (int) $match_parts[2];
-                $color_k = (int) $match_parts[3];
+                $color_c = (float) $match_parts[0];
+                $color_m = (float) $match_parts[1];
+                $color_y = (float) $match_parts[2];
+                $color_k = (float) $match_parts[3];
                 $this->pages[$current_page] = [
                     'C' => $color_c,
                     'M' => $color_m,
